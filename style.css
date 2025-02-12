@@ -1,0 +1,49 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+   
+}
+
+body{
+    width: 100vw;
+    border: 2px solid blue;
+    height: 100vh;
+    
+
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    width: 100%;
+    border: 1px solid;
+}
+
+header h1{
+    text-align: center;
+    padding: 5px 0;
+}
+.show-div{
+    padding: 20px 0;
+    width: 100%;
+    text-align: right;
+}
+
+dialog{
+    padding: 20px;
+    margin: auto;
+}
+
+.books{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+}
+
+.book-item{
+    width: 100%;
+}
