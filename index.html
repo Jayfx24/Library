@@ -6,56 +6,92 @@
     <title>Library</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <div class="container">
       <header>
         <h1>AOE's Library</h1>
         <!-- <p>to AOE's Library</p> -->
       </header>
-      <div class="books"></div>
-      <dialog>
-        <p>Add new book!</p>
-        <form method="dialog" id="form">
-          <label for="author" class="required">Author</label>
-          <input
-            type="text"
-            id="author"
-            name="author"
-            aria-required="true"
-            class="required"
-            required
-          />
 
-          <label for="title">Title</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            aria-required="true"
-            class="required"
-            required
-          />
-
-          <label for="pages">Pages</label>
-          <input
-            type="number"
-            id="pages"
-            name="pages"
-            aria-required="true"
-            class="required"
-            required
-          />
-
-          <label for="read">Read</label>
-          <input type="checkbox" id="read" name="read" />
-          <button class="close-add" autofocus>OK</button>
-        </form>
-
-        <button class="close-add">Close</button>
-      </dialog>
       <div class="show-div">
-        <button class="show-add">Add new books</button>
+        <div>
+          <a class="show-add">
+            <?xml version="1.0" ?><svg
+              height="48"
+              viewBox="0 0 48 48"
+              width="48"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M38 6h-28c-2.21 0-4 1.79-4 4v28c0 2.21 1.79 4 4 4h28c2.21 0 4-1.79 4-4v-28c0-2.21-1.79-4-4-4zm-4 20h-8v8h-4v-8h-8v-4h8v-8h4v8h8v4z"
+              />
+              <path d="M0 0h48v48h-48z" fill="none" />
+            </svg>
+          </a>
+        </div>
       </div>
+      <div class="book-container">
+        <div class="books">
+          <!-- <div class="filler"></div>
+          <div></div> -->
+        </div>
+      </div>
+      <dialog>
+        <h2>Add new book!</h2>
+        <form method="dialog" id="form">
+          <div>
+            <label for="author" class="required">Author</label>
+            <input
+              type="text"
+              id="author"
+              name="author"
+              aria-required="true"
+              class="required"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="title">Title</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              aria-required="true"
+              class="required"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="pages">Pages</label>
+            <input
+              type="number"
+              id="pages"
+              name="pages"
+              aria-required="true"
+              class="required"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="read">Status</label>
+            <select id="read" name="read">
+              <option value="">--Please choose an option--</option>
+              <option value="">Not Started</option>
+              <option value="">In progress</option>
+              <option value="">Done</option>
+            </select>
+          </div>
+
+          <div class="dialog-btns">
+            <button class="close-add" type="button">Close</button>
+            <button class="close-dialog" autofocus>OK</button>
+          </div>
+        </form>
+      </dialog>
     </div>
 
     <script src="script.js"></script>

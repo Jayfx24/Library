@@ -3,6 +3,14 @@ let bookContainers = document.querySelector('.books')
 let books = []
 
 
+// books.push(new Book('author','title',48,true))
+// bookContainers.appendChild(books)
+books.push(new Book('author','Title',48,'ongoing'))
+books.push(new Book('author','Title',48,true))
+books.push(new Book('author','Title',48,true))
+books.push(new Book('author','Title',48,true))
+
+
 
 function Book(author, title, noPages,hasRead){
     this.author = author;
@@ -18,24 +26,36 @@ function Book(author, title, noPages,hasRead){
 function displayBooks(){
     
     bookContainers.innerHTML = ""
+
     for(let book of books){
         let newItem = document.createElement('div');
-        newItem.className = "book-item"
-        // newItem.textContent = book.info()
-        // newItem.style.width = "200px"
-        newItem.style.border = "1px solid black"
+        newItem.className = "book-item";
+        // newItem.style.border = "1px solid black";
 
+        imgDiv = document.createElement("div")
+        imgDiv.className = 'img-div'
+        objDiv = document.createElement("div")
+        objDiv.className = 'obj-div'
         authorItem = document.createElement('p')
         authorItem.textContent = `Author: ${book['author']}`
+        authorItem.className ='author'
         titleItem = document.createElement('p')
-        titleItem.textContent = `Title : ${book['title']}`
+        titleItem.textContent = `${book['title']}`
+        titleItem.className = 'title'
         pagesItem = document.createElement('p')
-        pagesItem.textContent = `Title : ${book['noPages']}`
-        
+        pagesItem.textContent = `Pages : ${book['noPages']}`
+        pagesItem.className = 'pages'
+        hasRead = document.createElement('p');
 
-        newItem.appendChild(authorItem)
-        newItem.appendChild(titleItem)
-        newItem.appendChild(pagesItem)
+        hasRead.textContent = `Status : ${book['hasRead']}`;
+        hasRead.className = 'status'
+        
+        objDiv.appendChild(authorItem)
+        objDiv.appendChild(titleItem)
+        objDiv.appendChild(pagesItem)
+        objDiv.appendChild(hasRead)
+        newItem.appendChild(imgDiv)
+        newItem.appendChild(objDiv)
         bookContainers.appendChild(newItem)
 
     }
@@ -58,11 +78,14 @@ form.addEventListener("submit", function (event){
 
     
     displayBooks()
+    dialog.close()
+    form.reset()
+
     
    }
 );
 
-
+displayBooks()
 
 const showDialog = document.querySelector(".show-add")
 const dialog = document.querySelector("dialog");
@@ -71,6 +94,19 @@ showDialog.addEventListener("click", () => {
 })
 
 const closeDialog = document.querySelector(".close-add")
+
 closeDialog.addEventListener("click", () => {
     dialog.close();
+    // form.reset()
+    
 })
+
+
+dialog.addEventListener("click",(event) => {
+    if (event.target == dialog ){
+        dialog.close()
+    }
+})
+
+
+// }
