@@ -102,7 +102,7 @@ function displayBooks() {
     authorItem.className = "author";
 
     let titleItem = document.createElement("p");
-    titleItem.textContent = `${capitalize(book["title"])}`;
+    titleItem.textContent = capitalize(book["title"]);
     titleItem.className = "title";
 
     let pagesItem = document.createElement("p");
@@ -185,8 +185,8 @@ form.addEventListener("submit", function (event) {
   let author = document.getElementById("author").value;
   let title = document.getElementById("title").value;
   let pages = document.getElementById("pages").value;
-  let hasRead = document.getElementById("read").checked;
-  let bookImage = document.getElementById("image_url");
+  let hasRead = document.getElementById("read").value;
+  let bookImage = document.getElementById("image_url").value;
 
   let newBook = new Book(author, title, pages, hasRead, bookImage);
   books.push(newBook);
