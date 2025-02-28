@@ -106,7 +106,7 @@ button,a{
 .book-item:hover{
     box-shadow: -3px -3px 10px black,
     3px 7px 10px black;
-    transition: all 0.3s ease;
+    /* transition: all 0.3s ease; */
 }
 
 .book-image {
@@ -254,15 +254,11 @@ dialog form{
 
 }
 
-dialog {
-    animation: fade-out 0.7s ease-out;
-  }
-  
 
   
 dialog::backdrop {
     background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(1px);
+    
     
 }
 
