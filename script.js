@@ -1,28 +1,55 @@
 let form = document.querySelector("#form");
 let bookContainers = document.querySelector(".books");
 let books = [];
-// const deleteSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>delete</title><path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" /></svg>'
 
-// books.push(new Book('author','title',48,true))
-// bookContainers.appendChild(books)
-books.push(new Book("author", "Title", 48, "Not Started"));
 books.push(
   new Book(
-    "author",
-    "Title",
-    48,
-    "Done",
+    "Robert Greene",
+    "The 48 Laws Of Power",
+    452,
+    "Completed",
     "https://m.media-amazon.com/images/I/611X8GI7hpL.jpg"
   )
 );
-books.push(new Book("author", "Title", 48, "In progress"));
-books.push(new Book("author", "Title", 48, "ongoing",'https://m.media-amazon.com/images/I/611X8GI7hpL.jpg'));
-books.push(new Book("author", "Title", 48, "ongoing",'https://m.media-amazon.com/images/I/611X8GI7hpL.jpg'));
-books.push(new Book("author", "Title", 48, "ongoing",'https://m.media-amazon.com/images/I/611X8GI7hpL.jpg'));
-books.push(new Book("author", "Title", 48, "ongoing",'https://m.media-amazon.com/images/I/611X8GI7hpL.jpg'));
+books.push(
+  new Book(
+    "James Clear",
+    "Atomic Habits",
+    320,
+    "In Progress",
+    "https://m.media-amazon.com/images/I/81F90H7hnML._SL1500_.jpg"
+  )
+);
+books.push(
+  new Book(
+    "Mark Manson",
+    "The Subtle Art of Not Giving a F*ck",
+    224,
+    "In Progress",
+    "https://m.media-amazon.com/images/I/71QKQ9mwV7L._SL1500_.jpg"
+  )
+);
+// books.push(
+//   new Book(
+//     "author",
+//     "Title",
+//     48,
+//     "In Progress",
+//     "https://m.media-amazon.com/images/I/611X8GI7hpL.jpg"
+//   )
+// );
+// books.push(
+//   new Book(
+//     "author",
+//     "Title",
+//     48,
+//     "In Progress",
+//     "https://m.media-amazon.com/images/I/611X8GI7hpL.jpg"
+//   )
+// );
 
-books.push(new Book("author", "Title", 48, true));
-books.push(new Book("author", "Title", 48, true));
+// books.push(new Book("author", "Title", 48, "Completed"));
+// books.push(new Book("author", "Title", 48, "Completed"));
 
 // creATE SVG
 
@@ -65,7 +92,7 @@ function displayBooks() {
     objDiv.className = "obj-div";
 
     let authorItem = document.createElement("p");
-    authorItem.textContent = `by ${capitalize(book["author"])}`;
+    authorItem.textContent = capitalize(book["author"]);
     authorItem.className = "author";
 
     let titleItem = document.createElement("p");
@@ -77,36 +104,53 @@ function displayBooks() {
     pagesItem.className = "pages";
 
     let hasRead = document.createElement("p");
-    const status = book["hasRead"]
-    hasRead.textContent = `Status : ${status}`;
+    const status = book["hasRead"];
+    hasRead.textContent = `${status}`;
     hasRead.className = "status";
 
-    switch(status) {
-      case 'Not Started':
-        objDiv.style.borderTopColor =  'grey';
-        break;  
-      case 'In progress':
-        objDiv.style.borderTopColor = '#1976D2';
-        break;  
-      case 'Done':
-        objDiv.style.borderTopColor =  'green';
-        break;  
-    }
 
+    hasRead.setAttribute('title', 'Click to change status'); // Tooltip
 
+    hasRead.addEventListener("click", () => {
+      let currentValue = hasRead.textContent;
 
+      if (currentValue === "Not Started") {
+        book["hasRead"] = "In Progress";
+        objDiv.style.borderTopColor = "coral";
+
+      } else if (currentValue === "In Progress") {
+        book["hasRead"] = "Completed";
+        objDiv.style.borderTopColor = "green";
+      } else {
+        book["hasRead"] = "Not Started";
+        objDiv.style.borderTopColor = "grey";
+      }
+      hasRead.textContent = `${book["hasRead"]}`;
+      
+    });
 
     
 
+    switch (book["hasRead"]) {
+      case "Not Started":
+        objDiv.style.borderTopColor = "grey";
+        break;
+      case "In Progress":
+        objDiv.style.borderTopColor = "coral";
+        break;
+      case "Completed":
+        objDiv.style.borderTopColor = "green";
+        break;
+    }
+
     svg.addEventListener("click", () => {
-      if (confirm("Want to delete?")) {
+      if (confirm(`Want to delete ${titleItem.textContent} by ${authorItem.textContent}?`)) {
         index = books.indexOf(book);
         books.splice(index, 1);
         displayBooks();
-        // alert(`${book["title"]} deleted successfully! `);
+       
       }
     });
-
     objDiv.appendChild(titleItem);
     objDiv.appendChild(authorItem);
     objDiv.appendChild(pagesItem);
@@ -117,16 +161,16 @@ function displayBooks() {
     newItem.appendChild(imgDiv);
     newItem.appendChild(objDiv);
     bookContainers.appendChild(newItem);
+
+    
   }
 }
 
-function capitalize(str){
-  return str.charAt(0).toUpperCase() + str.slice(1)
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-function checkStatus(){
-
-}
+function checkStatus() {}
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -154,7 +198,7 @@ showDialog.addEventListener("click", () => {
   dialog.showModal();
 });
 
-const closeDialog = document.querySelector(".close-add");
+const closeDialog = document.querySelector(".close-dialog");
 
 closeDialog.addEventListener("click", () => {
   dialog.close();

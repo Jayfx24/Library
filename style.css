@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
+.shadows-into-light-regular {
+  font-family: "Shadows Into Light", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
+
 *{
     padding:0;
     margin: 0;
@@ -7,8 +18,9 @@
 
 /*  */
 body {
-    /* background-color: #1A1A19; */
-    color: #F6FCDF; /* Light yellow for text contrast */
+   
+    /* color: #F6FCDF; Light yellow for text contrast */
+    color: white;
     font-family: Arial, sans-serif;
 }
 
@@ -17,7 +29,8 @@ body {
 .container{
    
     min-height: 100vh;
-    background-color: #638C6D;
+    /* background-color: #638C6D; */
+    background-color: lightgray;
     display: grid;
     grid-template-rows: auto auto 3fr;
     overflow: auto;
@@ -26,7 +39,8 @@ body {
 header{
     padding: 2em 0;
     text-align: center;
-    background-color: #31511E;
+    /* background-color: #31511E; */
+    background-color: rgb(41, 39, 39);
     /* font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
 }
 .show-div{
@@ -48,7 +62,7 @@ button,a{
 }
 .show-add svg{
     /* width: 8rem; */
-    fill: gray;
+    fill: rgb(182, 121, 9);
     cursor: pointer;
 
     /* background-color: blue; */
@@ -83,19 +97,26 @@ button,a{
     width: 100%;
     max-width: 500px;
     height: 100%;
-    /* padding: .5em; */
-    /* border: 2px solid black; */
-    /* border-left: 20px solid brown; */
+    
     display: flex;
     flex-direction: column;
     /* background-color: #F6FCDF; */
     /* border: none; */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 6px rgba(0, 0, 0, 0.1);
+    /* box-shadow: -3px -3px 10px black,
+    1px 1px 10px; */
     border-radius: 10px;
     overflow: hidden;
     color: #7c7c6a; /* Dark text for readability */
     background-color: white;
+    
 
+}
+
+.book-item:hover{
+    box-shadow: -3px -3px 10px black,
+    3px 7px 10px black;
+    transition: all 0.3s ease;
 }
 
 .book-image {
@@ -109,12 +130,9 @@ button,a{
 
 .img-div{
     width: 100%;
-    height: 80%;
-    /* border: 1px solid; */
-    flex: 1;
+    height: 75%;
     position: relative;
-    /* border-bottom-left-radius: 9px;
-    border-bottom-right-radius: 9px; */
+    
 
 }
 
@@ -122,16 +140,34 @@ button,a{
     padding: 1em ;
     letter-spacing: 1px;
     background-color: transparent;
-    z-index: 1;
-    height: 20%;
-    border-top: 10px solid brown;
-
-    /* flex:1; */
+    height: 25%;
+    border-top: 10px solid;
+  
 }
 
 .obj-div p {
     font-weight: 600;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.status{
+    cursor: pointer;
+    /* padding-bottom: 1rem; */
+}
+
+.status:hover {
+    text-decoration: underline; 
+    font-weight: bolder;
+    color: #0056b3; 
+}
+
+
+.book-item:hover .status::after {
+    content: " (click to change)"; 
+    font-style: italic;
+    color: #beb6b6; 
+    text-align: end;
+    margin-left: 5px;
 }
 
 #svg-container{
@@ -141,29 +177,47 @@ button,a{
     position: absolute;
     top: .5em;
     right: .5em;
-    /* border: 1px solid */
+ 
 }
 
 #svg-container img{
     width: 100%;
     cursor: pointer;
 }
-/* 
-.title{
-    text-align: center;
-    text-wrap: wrap;
-    padding: 0.5rem 0;
-    margin-bottom: .5rem;
-} */
 
+.title{
+
+    text-wrap: wrap;
+    font-size: 1.2em;
+    color: black;
+    width: 20ch;
+    height: 40%;
+    
+    margin-bottom: 4px;
+}
+
+.author{
+    font-size: 1em;
+    /* color:black; */
+}
+.author::before{
+    content: "by ";
+    color:#7c7c6a;
+    font-style: italic;
+
+
+}
 dialog{
     margin: auto;
-    padding: 2rem 1rem;
-    width: clamp(300px, 35%, 450px);
+    padding: 3rem 0.8rem;
+    width: 400px;
     /* height: auto; */
-    background-color: #31511E;
+    /* background-color: #31511E; */
+    
+    background-color: rgb(41, 39, 39) ;
     color: white;
-    border-radius: 6px;
+    border-radius: 16px;
+    border: none;
    
 }
 
@@ -193,13 +247,13 @@ dialog {
     animation: fade-out 0.7s ease-out;
   }
   
-dialog:open {
-animation: fade-in 0.7s ease-out;
-}
+
   
 dialog::backdrop {
     background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(5px); /* Adds a blur effect */}
+    backdrop-filter: blur(1px);
+    
+}
 
 
 form input {
@@ -224,7 +278,7 @@ form label{
 }
 
 .dialog-btns{
-    border: 1px solid;
+    /* border: 1px solid; */
     display: flex;
     justify-content: center;
     margin-top: 10px;
@@ -235,6 +289,29 @@ form label{
 .dialog-btns button{
     flex: 1;
     height: 2.5rem;
-    border-radius: 8px;
+    border-radius: 8px; 
+    font-size: 1em;    
+    /* outline: 1px solid white;
+    border: 1px solid white; */
    
+}
+
+.submit{
+    background-color: #28A745;
+    /* border-color: #28A745; */
+    outline: none;
+    color: white;
+}
+
+.submit:hover{
+    background-color: rgb(22, 3, 46);
+    /* color: black; */
+    font-weight: 800;
+
+}
+
+.close-dialog:hover{
+    background-color: red;
+    color: white;
+    font-weight: 800;
 }
