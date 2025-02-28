@@ -74,8 +74,14 @@ function displayBooks() {
 
     const svg = document.createElement("img");
     svg.src = "images/delete.svg";
-    svg.alt = "SVG Image";
-    svg.className = "delete-svg";
+    svg.alt = "delete icon";
+    svg.className = "delete";
+
+    const delSvg = document.createElement("img")
+    delSvg.src = "images/delete-empty.svg"
+    delSvg.alt = "delete icon"
+    delSvg.className ="delete-after"
+    
     const svgContainer = document.createElement("div");
     svgContainer.id = "svg-container";
     let imgDiv = document.createElement("div");
@@ -156,7 +162,8 @@ function displayBooks() {
     objDiv.appendChild(pagesItem);
     objDiv.appendChild(hasRead);
     svgContainer.appendChild(svg);
-    imgDiv.appendChild(svgContainer);
+    svgContainer.appendChild(delSvg);
+    objDiv.appendChild(svgContainer);
     imgDiv.appendChild(bookImage);
     newItem.appendChild(imgDiv);
     newItem.appendChild(objDiv);
