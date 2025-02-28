@@ -149,7 +149,7 @@ function displayBooks() {
         break;
     }
 
-    svg.addEventListener("click", () => {
+    delSvg.addEventListener("click", () => {
       if (confirm(`Want to delete ${titleItem.textContent} by ${authorItem.textContent}?`)) {
         index = books.indexOf(book);
         books.splice(index, 1);
