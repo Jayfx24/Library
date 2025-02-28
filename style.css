@@ -180,9 +180,6 @@ button,a{
 
 #svg-container .delete:hover{
     display: none;
-    background-color: black;
-    /* width: 500px; */
-
 }
 
 #svg-container .delete-after{
@@ -196,9 +193,7 @@ button,a{
 #svg-container:hover .delete-after{
     display: inline;
 }
-.delete-after:hover{
-    display: inline;
-}
+
 
 .title{
 
