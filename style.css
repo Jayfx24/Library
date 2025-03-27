@@ -104,8 +104,8 @@ button,a{
 }
 
 .book-item:hover{
-    box-shadow: -3px -3px 10px black,
-    3px 7px 10px black;
+    box-shadow: -1px 3px 10px rgba(0, 0, 0, 1.2),
+    -1px 3px 10px rgba(0, 0, 0, 0.2);
     /* transition: all 0.3s ease; */
 }
 

@@ -2,6 +2,22 @@ let form = document.querySelector("#form");
 let bookContainers = document.querySelector(".books");
 let books = [];
 
+
+class Book {
+  constructor(){
+    (author, title, noPages, hasRead, image)
+    this.author = author;
+    this.title = title;
+    this.noPages = noPages;
+    this.hasRead = hasRead;
+    this.image = image;
+  }
+
+  info () {
+    return `${this.title} by ${this.author}, ${this.noPages} pages, ${hasRead}`;
+  };
+}
+
 books.push(
   new Book(
     "Robert Greene",
@@ -29,41 +45,10 @@ books.push(
     "https://m.media-amazon.com/images/I/71QKQ9mwV7L._SL1500_.jpg"
   )
 );
-// books.push(
-//   new Book(
-//     "author",
-//     "Title",
-//     48,
-//     "In Progress",
-//     "https://m.media-amazon.com/images/I/611X8GI7hpL.jpg"
-//   )
-// );
-// books.push(
-//   new Book(
-//     "author",
-//     "Title",
-//     48,
-//     "In Progress",
-//     "https://m.media-amazon.com/images/I/611X8GI7hpL.jpg"
-//   )
-// );
 
-// books.push(new Book("author", "Title", 48, "Completed"));
-// books.push(new Book("author", "Title", 48, "Completed"));
 
-// creATE SVG
 
-function Book(author, title, noPages, hasRead, image) {
-  this.author = author;
-  this.title = title;
-  this.noPages = noPages;
-  this.hasRead = hasRead;
-  this.image = image;
 
-  Book.prototype.info = function () {
-    return `${this.title} by ${this.author}, ${this.noPages} pages, ${hasRead}`;
-  };
-}
 
 function displayBooks() {
   bookContainers.innerHTML = "";
@@ -177,7 +162,6 @@ function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-function checkStatus() {}
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
