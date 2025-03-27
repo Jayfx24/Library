@@ -4,8 +4,7 @@ let books = [];
 
 
 class Book {
-  constructor(){
-    (author, title, noPages, hasRead, image)
+  constructor(author, title, noPages, hasRead, image){
     this.author = author;
     this.title = title;
     this.noPages = noPages;
