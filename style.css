@@ -20,8 +20,7 @@ body {
 .container{
    
     min-height: 100vh;
-    /* background-color: #638C6D; */
-    background-color: lightgray;
+    background-color: #f5f5f5;
     display: grid;
     grid-template-rows: auto auto 3fr;
     overflow: auto;
@@ -225,8 +224,8 @@ button,a{
 
 dialog{
     margin: auto;
-    padding: 3rem 0.8rem;
-    width: 400px;
+    padding:0.8rem;
+    width: clamp(350px,40vw,425px);
     background-color: rgb(41, 39, 39) ;
     color: white;
     border-radius: 16px;
@@ -235,7 +234,7 @@ dialog{
 }
 
 dialog h2 {
-    margin-bottom: 10px;
+    margin-top: .5rem;
     text-align: center;
     color: white
 
@@ -243,18 +242,21 @@ dialog h2 {
 }
 
 dialog form{
-    display: grid;
-    /* flex-direction: column; */
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     height: 100%;
     gap: 1em;
     width: 100%;
-    /* padding: 0 1rem; */
+    padding: 2rem 1rem;
+    /* border: 1px solid black; */
 
 
 }
 
-
+form div{
+    /* border: 1px solid white; */
+}
   
 dialog::backdrop {
     background: rgba(0, 0, 0, 0.4);
@@ -264,20 +266,15 @@ dialog::backdrop {
 
 
 form input {
-    padding: .8em .2em;
 }
 form input,select{
     /* margin-bottom: 1em; */
-    height: 1.4rem;
+    padding: 0 .2em;
+    height: 2rem;
     font-size: 1rem;
-    width: clamp(300px, 80%, 500px);
-    /* max-width: 400px; */
+    width: 100%;
     margin-top: 5px;
 
-}
-
-form div *{
-    display: block;
 }
 
 form label{
@@ -289,17 +286,16 @@ form label{
     display: flex;
     justify-content: center;
     margin-top: 10px;
-    gap: 10px;
+    gap: .5rem;
 
 }
 
 .dialog-btns button{
     flex: 1;
-    height: 2.5rem;
+    padding: .5rem ;
     border-radius: 8px; 
     font-size: 1em;    
-    /* outline: 1px solid white;
-    border: 1px solid white; */
+   border: inherit;
    
 }
 
