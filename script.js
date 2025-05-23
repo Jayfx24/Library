@@ -1,10 +1,12 @@
 let form = document.querySelector("#form");
 let bookContainers = document.querySelector(".books");
 let books = [];
-
+const formAuthor = document.getElementById("author");
+const authorError = document.querySelector("#author + span");
+const formError = document.querySelector("#form span");
 
 class Book {
-  constructor(author, title, noPages, hasRead, image){
+  constructor(author, title, noPages, hasRead, image) {
     this.author = author;
     this.title = title;
     this.noPages = noPages;
@@ -12,9 +14,9 @@ class Book {
     this.image = image;
   }
 
-  info () {
+  info() {
     return `${this.title} by ${this.author}, ${this.noPages} pages, ${hasRead}`;
-  };
+  }
 }
 
 books.push(
@@ -45,10 +47,6 @@ books.push(
   )
 );
 
-
-
-
-
 function displayBooks() {
   bookContainers.innerHTML = "";
 
@@ -61,11 +59,11 @@ function displayBooks() {
     svg.alt = "delete icon";
     svg.className = "delete";
 
-    const delSvg = document.createElement("img")
-    delSvg.src = "images/delete-empty.svg"
-    delSvg.alt = "delete icon"
-    delSvg.className ="delete-after"
-    
+    const delSvg = document.createElement("img");
+    delSvg.src = "images/delete-empty.svg";
+    delSvg.alt = "delete icon";
+    delSvg.className = "delete-after";
+
     const svgContainer = document.createElement("div");
     svgContainer.id = "svg-container";
     let imgDiv = document.createElement("div");
@@ -98,8 +96,7 @@ function displayBooks() {
     hasRead.textContent = `${status}`;
     hasRead.className = "status";
 
-
-    hasRead.setAttribute('title', 'Click to change status'); // Tooltip
+    hasRead.setAttribute("title", "Click to change status"); // Tooltip
 
     hasRead.addEventListener("click", () => {
       let currentValue = hasRead.textContent;
@@ -107,7 +104,6 @@ function displayBooks() {
       if (currentValue === "Not Started") {
         book["hasRead"] = "In Progress";
         objDiv.style.borderTopColor = "coral";
-
       } else if (currentValue === "In Progress") {
         book["hasRead"] = "Completed";
         objDiv.style.borderTopColor = "green";
@@ -116,10 +112,7 @@ function displayBooks() {
         objDiv.style.borderTopColor = "grey";
       }
       hasRead.textContent = `${book["hasRead"]}`;
-      
     });
-
-    
 
     switch (book["hasRead"]) {
       case "Not Started":
@@ -134,11 +127,14 @@ function displayBooks() {
     }
 
     delSvg.addEventListener("click", () => {
-      if (confirm(`Want to delete ${titleItem.textContent} by ${authorItem.textContent}?`)) {
+      if (
+        confirm(
+          `Want to delete ${titleItem.textContent} by ${authorItem.textContent}?`
+        )
+      ) {
         index = books.indexOf(book);
         books.splice(index, 1);
         displayBooks();
-       
       }
     });
     objDiv.appendChild(titleItem);
@@ -152,8 +148,6 @@ function displayBooks() {
     newItem.appendChild(imgDiv);
     newItem.appendChild(objDiv);
     bookContainers.appendChild(newItem);
-
-    
   }
 }
 
@@ -161,10 +155,14 @@ function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
+  if (!form.checkValidity()) {
+    formError.textContent = `Please fill out all required fields.`;
+    return;
+  }
+  formError.textContent = "";
   let author = document.getElementById("author").value;
   let title = document.getElementById("title").value;
   let pages = document.getElementById("pages").value;
@@ -202,3 +200,11 @@ dialog.addEventListener("click", (event) => {
 });
 
 // }
+formAuthor.addEventListener("input", () => {
+  if (formAuthor.validity.tooShort) {
+    authorError.textContent = `author's name should be at least ${formAuthor.minLength} characters; you entered ${formAuthor.value.length}.`;
+  } else {
+    authorError.textContent = "";
+    formError.textContent = "";
+  }
+});

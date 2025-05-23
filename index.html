@@ -39,7 +39,9 @@
       </div>
       <dialog >
         <h2>Add new book!</h2>
-        <form method="dialog" id="form">
+        <form method="dialog" id="form" novalidate>
+          <span class="error" aria-live="polite"></span>
+
           <div>
             <label for="author" class="required">Author</label>
             <input
@@ -49,7 +51,9 @@
               aria-required="true"
               class="required"
               required
+              minlength="4"
             />
+            <span class="error" aria-live="polite"></span>
           </div>
 
           <div>
@@ -74,6 +78,7 @@
               class="required"
               required
             />
+            
           </div>
 
           <div>
@@ -82,13 +87,14 @@
           </div>
           <div>
             <label for="read">Status</label>
-            <select id="read" name="read">
+            <select id="read" name="read" required>
               <option value="">--Please choose an option--</option>
               <option value="Not Started">Not Started</option>
               <option value="In Progress">In Progress</option>
               <option value="Completed">Completed</option>
             </select>
           </div>
+
 
           <div class="dialog-btns">
             <button class="close-dialog" type="button">Close</button>

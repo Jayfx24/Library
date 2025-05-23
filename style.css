@@ -1,7 +1,5 @@
-
-
-*{
-    padding:0;
+* {
+    padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
@@ -9,7 +7,7 @@
 
 /*  */
 body {
-   
+
     /* color: #F6FCDF; Light yellow for text contrast */
     color: white;
     font-family: Arial, sans-serif;
@@ -17,8 +15,8 @@ body {
 
 
 
-.container{
-   
+.container {
+
     min-height: 100vh;
     background-color: #f5f5f5;
     display: grid;
@@ -26,13 +24,14 @@ body {
     overflow: auto;
 }
 
-header{
+header {
     padding: 2em 0;
     text-align: center;
     /* background-color: #31511E; */
     background-color: rgb(41, 39, 39);
 }
-.show-div{
+
+.show-div {
     position: relative;
     right: 0;
     /* border: 1px solid blue; */
@@ -40,16 +39,18 @@ header{
     padding: 1em 0;
 }
 
-.show-add{
+.show-add {
     position: sticky;
     top: 100px;
     right: 2.2em;
 }
 
-button,a{
+button,
+a {
     cursor: pointer;
 }
-.show-add svg{
+
+.show-add svg {
     /* width: 8rem; */
     fill: rgb(182, 121, 9);
     cursor: pointer;
@@ -57,19 +58,21 @@ button,a{
     /* background-color: blue; */
 }
 
-.show-add svg:hover{
+.show-add svg:hover {
     fill: black;
     cursor: pointer;
 
 }
-.book-container{
-   
+
+.book-container {
+
     padding: 1rem 3rem;
     margin-bottom: 3rem;
     /* width: 80%; */
-    
+
 }
-.books{
+
+.books {
     width: 100%;
     height: 100%;
     display: grid;
@@ -86,7 +89,7 @@ button,a{
     width: 100%;
     max-width: 500px;
     height: 100%;
-    
+
     display: flex;
     flex-direction: column;
     /* background-color: #F6FCDF; */
@@ -96,38 +99,40 @@ button,a{
     1px 1px 10px; */
     border-radius: 10px;
     overflow: hidden;
-    color: #7c7c6a; /* Dark text for readability */
+    color: #7c7c6a;
+    /* Dark text for readability */
     background-color: white;
-    
+
 
 }
 
-.book-item:hover{
+.book-item:hover {
     box-shadow: -1px 3px 10px rgba(0, 0, 0, 1.2),
-    -1px 3px 10px rgba(0, 0, 0, 0.2);
+        -1px 3px 10px rgba(0, 0, 0, 0.2);
     /* transition: all 0.3s ease; */
 }
 
 .book-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;  /* Ensures the image covers the container */
+    object-fit: cover;
+    /* Ensures the image covers the container */
     border-radius: 0;
 
 }
 
 
-.img-div{
+.img-div {
     width: 100%;
     height: 75%;
     /* flex:1; */
-    
-    
+
+
 
 }
 
-.obj-div{
-    padding: 1em ;
+.obj-div {
+    padding: 1em;
     letter-spacing: 1px;
     background-color: transparent;
     height: auto;
@@ -136,7 +141,7 @@ button,a{
     /* display: flex;
     flex-direction: column;
     justify-content: center; */
-  
+
 }
 
 .obj-div p {
@@ -144,27 +149,27 @@ button,a{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.status{
+.status {
     cursor: pointer;
     /* padding-bottom: 1rem; */
 }
 
 .status:hover {
-    text-decoration: underline; 
+    text-decoration: underline;
     font-weight: bolder;
-    color: #0056b3; 
+    color: #0056b3;
 }
 
 
 .book-item:hover .status::after {
-    content: " (click to change)"; 
+    content: " (click to change)";
     font-style: italic;
-    color: #beb6b6; 
+    color: #beb6b6;
     text-align: end;
     margin-left: 5px;
 }
 
-#svg-container{
+#svg-container {
     width: 30px;
     height: 30px;
     background-color: transparent;
@@ -173,75 +178,74 @@ button,a{
     right: .5em;
     cursor: pointer;
 
- 
+
 }
 
-#svg-container .delete{
+#svg-container .delete {
     display: inline;
     width: 100%;
 }
 
-#svg-container .delete:hover{
+#svg-container .delete:hover {
     display: none;
 }
 
-#svg-container .delete-after{
+#svg-container .delete-after {
     display: none;
 }
 
-#svg-container:hover .delete{
+#svg-container:hover .delete {
     display: none;
 }
 
-#svg-container:hover .delete-after{
+#svg-container:hover .delete-after {
     display: inline;
 }
 
 
-.title{
+.title {
 
     text-wrap: wrap;
     font-size: 1.2em;
     color: black;
     width: 20ch;
     /* height: 30%; */
-    
+
     margin-bottom: 4px;
     overflow: auto;
 }
 
-.author{
+.author {
     font-size: 1em;
     /* color:black; */
 }
-.author::before{
+
+.author::before {
     content: "by ";
-    color:#7c7c6a;
+    color: #7c7c6a;
     font-style: italic;
 
 
 }
 
-dialog{
+dialog {
     margin: auto;
-    padding:0.8rem;
-    width: clamp(350px,40vw,425px);
-    background-color: rgb(41, 39, 39) ;
+    padding: 0.8rem;
+    width: clamp(350px, 40vw, 425px);
+    background-color: rgb(41, 39, 39);
     color: white;
     border-radius: 16px;
     border: none;
-   
+
 }
 
 dialog h2 {
     margin-top: .5rem;
     text-align: center;
     color: white
-
-
 }
 
-dialog form{
+dialog form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -254,20 +258,21 @@ dialog form{
 
 }
 
-form div{
+form div {
     /* border: 1px solid white; */
 }
-  
+
 dialog::backdrop {
     background: rgba(0, 0, 0, 0.4);
-    
-    
+
+
 }
 
 
-form input {
-}
-form input,select{
+form input {}
+
+form input,
+select {
     /* margin-bottom: 1em; */
     padding: 0 .2em;
     height: 2rem;
@@ -277,11 +282,11 @@ form input,select{
 
 }
 
-form label{
+form label {
     font-size: 1.2rem;
 }
 
-.dialog-btns{
+.dialog-btns {
     /* border: 1px solid; */
     display: flex;
     justify-content: center;
@@ -290,31 +295,43 @@ form label{
 
 }
 
-.dialog-btns button{
+.dialog-btns button {
     flex: 1;
-    padding: .5rem ;
-    border-radius: 8px; 
-    font-size: 1em;    
-   border: inherit;
-   
+    padding: .5rem;
+    border-radius: 8px;
+    font-size: 1em;
+    border: inherit;
+
 }
 
-.submit{
+.submit {
     background-color: #28A745;
     /* border-color: #28A745; */
     outline: none;
     color: white;
 }
 
-.submit:hover{
+.submit:hover {
     background-color: rgb(22, 3, 46);
     /* color: black; */
     font-weight: 800;
 
 }
 
-.close-dialog:hover{
+.close-dialog:hover {
     background-color: red;
     color: white;
     font-weight: 800;
+}
+
+.error {
+    /* padding: 0 0.3rem; */
+    font-size: .9rem;
+    color: red;
+    font-weight: 600;
+}
+
+input:user-invalid,select:user-invalid{
+    background-color: gray;
+    outline: 2px solid red;
 }
