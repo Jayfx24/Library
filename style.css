@@ -333,5 +333,6 @@ form label {
 
 input:user-invalid,select:user-invalid{
     background-color: gray;
+    border: 2px solid red;
     outline: 2px solid red;
 }
